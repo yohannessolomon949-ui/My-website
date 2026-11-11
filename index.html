@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ዮሐንስ ሰለሞን — Digital Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0A0A0F; --bg2:#111118; --surface:#16161F; --border:#1E1E2A;
+  --accent:#6C63FF; --accent2:#A78BFA; --gold:#F5C842;
+  --text:#F0EEF8; --muted:#8884A0; --white:#FFFFFF;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk','Noto Sans Ethiopic',sans-serif;line-height:1.6;overflow-x:hidden;}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+/* ── PARTICLES CANVAS ── */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.5;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;background:rgba(10,10,15,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:-.02em;color:var(--white);}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--accent);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:100px;font-weight:600!important;font-size:.85rem!important;}
+.nav-cta:hover{background:var(--accent2);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 2.5rem 4rem;max-width:1200px;margin:0 auto;gap:4rem;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.3);border-radius:100px;padding:.4rem 1rem;font-size:.8rem;color:var(--accent2);font-weight:600;margin-bottom:1.75rem;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+h1.hero-name{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:var(--white);margin-bottom:.5rem;}
+h1.hero-name .accent-line{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-title{font-size:1.1rem;color:var(--muted);margin-bottom:1.5rem;font-weight:400;}
+.hero-desc{font-family:'Noto Sans Ethiopic',sans-serif;font-size:1rem;color:var(--muted);line-height:1.8;max-width:480px;margin-bottom:2.5rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--white);padding:.85rem 2rem;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .2s,background .2s;display:inline-block;}
+.btn-primary:hover{transform:translateY(-2px);background:var(--accent2);}
+.btn-secondary{background:transparent;color:var(--text);padding:.85rem 2rem;border-radius:100px;font-weight:500;font-size:.95rem;text-decoration:none;border:1px solid var(--border);transition:border-color .2s,color .2s;display:inline-block;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent2);}
+
+/* ── HERO RIGHT ── */
+.hero-right{display:flex;flex-direction:column;gap:1rem;}
+.award-card{background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(167,139,250,.08));border:1px solid rgba(108,99,255,.25);border-radius:20px;padding:1.75rem;position:relative;overflow:hidden;}
+.award-card::before{content:'🏆';position:absolute;right:1.5rem;top:1.25rem;font-size:2rem;opacity:.85;animation:trophyBounce 2.4s ease-in-out infinite;transform-origin:center bottom;}
+@keyframes trophyBounce{
+  0%  {transform:translateY(0) rotate(-4deg) scale(1);}
+  20% {transform:translateY(-10px) rotate(5deg) scale(1.1);}
+  40% {transform:translateY(-4px) rotate(-3deg) scale(1.04);}
+  55% {transform:translateY(-8px) rotate(4deg) scale(1.07);}
+  70% {transform:translateY(0) rotate(0) scale(1);}
+  85% {transform:translateY(-2px) rotate(-1deg) scale(1.01);}
+  100%{transform:translateY(0) rotate(-4deg) scale(1);}
+}
+.award-label{font-size:.75rem;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;}
+.award-title{font-size:1.15rem;font-weight:700;color:var(--white);}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.25rem;transition:border-color .2s,transform .2s;}
+.stat-box:hover{border-color:rgba(108,99,255,.4);transform:translateY(-3px);}
+.stat-num{font-size:1.75rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:.3rem;}
+.stat-num .unit{font-size:1rem;color:var(--accent2);}
+.stat-label{font-size:.75rem;color:var(--muted);font-weight:500;}
+
+/* ── FADE-IN SCROLL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .65s ease,transform .65s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .65s ease,transform .65s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .55s ease,transform .55s ease;}
+.reveal-scale.visible{opacity:1;transform:scale(1);}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:5rem 2.5rem;max-width:1200px;margin:0 auto;}
+.section-eyebrow{font-size:.75rem;font-weight:600;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;}
+.section-heading{font-size:clamp(1.8rem,3vw,2.75rem);font-weight:700;letter-spacing:-.025em;color:var(--white);margin-bottom:1rem;}
+.section-sub{color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:3rem;}
+
+/* ── SERVICES ── */
+#services{background:var(--bg2);max-width:100%;padding:5rem 0;z-index:1;}
+#services .inner{max-width:1200px;margin:0 auto;padding:0 2.5rem;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:border-color .25s,transform .25s,box-shadow .25s;cursor:default;}
+.service-card:hover{border-color:rgba(108,99,255,.5);transform:translateY(-6px);box-shadow:0 16px 40px rgba(108,99,255,.12);}
+.service-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.25rem;background:rgba(108,99,255,.12);transition:transform .3s;}
+.service-card:hover .service-icon{transform:scale(1.15) rotate(-5deg);}
+.service-name{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.service-desc{font-size:.875rem;color:var(--muted);line-height:1.65;font-family:'Noto Sans Ethiopic',sans-serif;}
+
+/* ── ANALYTICS CHART SECTION ── */
+#analytics{position:relative;z-index:1;}
+.analytics-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.chart-container{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:2rem;}
+.chart-title{font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.chart-title span{color:var(--accent2);}
+.bar-chart{display:flex;align-items:flex-end;gap:.6rem;height:160px;}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;height:100%;}
+.bar{width:100%;background:linear-gradient(180deg,var(--accent),rgba(108,99,255,.3));border-radius:6px 6px 2px 2px;transform:scaleY(0);transform-origin:bottom;transition:transform .9s cubic-bezier(.34,1.56,.64,1);}
+.bar.animated{transform:scaleY(1);}
+.bar-month{font-size:.65rem;color:var(--muted);font-weight:500;}
+.bar-val{font-size:.65rem;color:var(--accent2);font-weight:700;opacity:0;transition:opacity .4s .9s;}
+.bar.animated + .bar-val,.bar-val.show{opacity:1;}
+
+.donut-row{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.5rem;}
+.donut-item{display:flex;align-items:center;gap:.9rem;}
+.donut-label{font-size:.8rem;color:var(--text);flex:1;font-weight:500;}
+.donut-bar-bg{flex:2;height:6px;background:var(--border);border-radius:100px;overflow:hidden;}
+.donut-bar-fill{height:100%;border-radius:100px;width:0;transition:width 1.2s cubic-bezier(.34,1.1,.64,1);}
+.donut-pct{font-size:.75rem;color:var(--accent2);font-weight:700;width:36px;text-align:right;}
+
+.analytics-text h3{font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1rem;letter-spacing:-.02em;}
+.analytics-text p{font-family:'Noto Sans Ethiopic',sans-serif;color:var(--muted);line-height:1.8;margin-bottom:1.25rem;font-size:.95rem;}
+
+.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem;}
+.mini-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;}
+.mini-stat-num{font-size:1.4rem;font-weight:700;color:var(--white);}
+.mini-stat-label{font-size:.7rem;color:var(--muted);margin-top:.2rem;}
+
+/* ── RESULTS ── */
+.results-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.big-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.big-stat{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.75rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s;}
+.big-stat:hover{transform:translateY(-4px);border-color:rgba(108,99,255,.35);}
+.big-stat:first-child{grid-column:span 2;background:linear-gradient(135deg,rgba(108,99,255,.18),rgba(167,139,250,.08));border-color:rgba(108,99,255,.3);}
+.big-stat-num{font-size:2.75rem;font-weight:700;color:var(--white);line-height:1;letter-spacing:-.03em;}
+.big-stat:first-child .big-stat-num{font-size:3.5rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.big-stat-label{font-size:.8rem;color:var(--muted);margin-top:.4rem;font-weight:500;}
+.results-text h3{font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1rem;letter-spacing:-.02em;}
+.results-text p{font-family:'Noto Sans Ethiopic',sans-serif;color:var(--muted);line-height:1.8;margin-bottom:1.25rem;font-size:.95rem;}
+.tiktok-link{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:.65rem 1.25rem;color:var(--text);text-decoration:none;font-size:.875rem;font-weight:600;transition:border-color .2s,color .2s,transform .2s;}
+.tiktok-link:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-2px);}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg2);max-width:100%;padding:5rem 0;z-index:1;}
+#skills .inner{max-width:1200px;margin:0 auto;padding:0 2.5rem;}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.skill-bars{display:flex;flex-direction:column;gap:1.1rem;}
+.skill-row{}
+.skill-row-top{display:flex;justify-content:space-between;margin-bottom:.45rem;}
+.skill-row-name{font-size:.875rem;font-weight:600;color:var(--text);}
+.skill-row-pct{font-size:.8rem;color:var(--accent2);font-weight:700;}
+.skill-track{height:8px;background:var(--border);border-radius:100px;overflow:hidden;}
+.skill-fill{height:100%;border-radius:100px;width:0;transition:width 1.3s cubic-bezier(.34,1.1,.64,1);}
+
+.skills-tags-wrap{}
+.skills-tags-wrap h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:1rem;}
+.skills-list{display:flex;flex-wrap:wrap;gap:.65rem;}
+.skill-tag{background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:.55rem 1.1rem;font-size:.82rem;color:var(--text);font-weight:500;transition:border-color .2s,color .2s,transform .2s;}
+.skill-tag:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-2px);}
+
+/* ── CONTACT ── */
+#contact{text-align:center;}
+.contact-wrapper{background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(167,139,250,.06));border:1px solid rgba(108,99,255,.2);border-radius:28px;padding:4rem 3rem;max-width:700px;margin:0 auto;}
+.contact-wrapper .section-heading{margin-bottom:.75rem;}
+.contact-channels{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:2.5rem;}
+.channel-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:.8rem 1.6rem;color:var(--text);text-decoration:none;font-size:.9rem;font-weight:600;transition:border-color .2s,color .2s,transform .2s;}
+.channel-btn:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-3px);}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.8rem;}
+
+/* ── DIVIDER ── */
+.divider{position:relative;z-index:1;width:100%;height:1px;background:var(--border);max-width:1200px;margin:0 auto;}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;padding:6rem 1.25rem 3rem;gap:2.5rem;}
+  section{padding:3.5rem 1.25rem;}
+  #services,#skills,#analytics{padding:3.5rem 0;}
+  #services .inner,#skills .inner{padding:0 1.25rem;}
+  .analytics-wrap,.results-layout,.skills-grid{grid-template-columns:1fr;}
+  .big-stats{grid-template-columns:1fr;}
+  .big-stat:first-child{grid-column:span 1;}
+  .big-stat-num{font-size:2.2rem;}
+  .big-stat:first-child .big-stat-num{font-size:2.8rem;}
+  .contact-wrapper{padding:2.5rem 1.5rem;}
+  footer{flex-direction:column;gap:.5rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ዮሐንስ<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#analytics">Analytics</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">TikTok Award Nominee</div>
+      <h1 class="hero-name">
+        ዮሐንስ ሰለሞን<br>
+        <span class="accent-line">Digital Marketer</span>
+      </h1>
+      <p class="hero-title">Social Media Manager & Content Strategist</p>
+      <p class="hero-desc">ብራንዶች ታዳሚዎቻቸውን እንዲያገኙ፣ ንግዳቸው እንዲያድግ እና በማህበራዊ ሚዲያ ላይ ጠንካራ Online Presence እንዲኖራቸው አደርጋለሁ።</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">ስራ እንስራ</a>
+        <a href="#results" class="btn-secondary">ስኬቶቼን ይመልከቱ</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="award-card">
+        <div class="award-label">TikTok Ethiopia Awards</div>
+        <div class="award-title">እጩ — Best Content Creator 2026</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-num" id="h1">50<span class="unit">K+</span></div>
+          <div class="stat-label">TikTok Followers</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="h2">36.8<span class="unit">M</span></div>
+          <div class="stat-label">Total Views</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="h3">2.4<span class="unit">M</span></div>
+          <div class="stat-label">Total Likes</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="h4">469<span class="unit">K</span></div>
+          <div class="stat-label">Shares</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="inner">
+    <div class="section-eyebrow reveal">What I Do</div>
+    <h2 class="section-heading reveal">የምሰጣቸው አገልግሎቶች</h2>
+    <p class="section-sub reveal">ንግድዎ ዲጂታሉ ዓለም ውስጥ እንዲያድግ የሚያስፈልጉ ሁሉም አገልግሎቶች።</p>
+    <div class="services-grid">
+      <div class="service-card reveal" style="transition-delay:.05s">
+        <div class="service-icon">📣</div>
+        <div class="service-name">Brand Awareness</div>
+        <div class="service-desc">ንግድዎ ወይም ምርትዎ ሰዎች ዘንድ እንዲታወቅ ማድረግ — ትክክለኛ ታዳሚ፣ ትክክለኛ ጊዜ።</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.1s">
+        <div class="service-icon">🎯</div>
+        <div class="service-name">Social Media Strategy</div>
+        <div class="service-desc">የገጽ እድገት ስልቶችን መንደፍ፣ ማቀድ እና ስልተ-ቀመሮችን (Algorithms) ተጠቅሞ ለመድረስ።</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.15s">
+        <div class="service-icon">🎬</div>
+        <div class="service-name">Content Creation & Editing</div>
+        <div class="service-desc">ማራኪ ቪዲዮዎችን፣ ፎቶዎችን እና ማስታወቂያዎችን — ቫይራል ለሚሆን ይዘት ዲዛይን።</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.2s">
+        <div class="service-icon">🚀</div>
+        <div class="service-name">Viral Content Strategy</div>
+        <div class="service-desc">ብዙ እይታዎችን እና ተደራሽነትን የሚያመጡ ይዘቶችን ማዘጋጀት፣ ቫይራሊቲ አቅዶ ማስፈጸም።</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.25s">
+        <div class="service-icon">💰</div>
+        <div class="service-name">Paid Advertising</div>
+        <div class="service-desc">ውጤታማ የዲጂታል ማስታወቂያ ዘመቻዎችን (Promotions) ማስተዳደር እና ROI ማሳደግ።</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:.3s">
+        <div class="service-icon">📊</div>
+        <div class="service-name">Analytics & Reporting</div>
+        <div class="service-desc">የገጽ አፈጻጸምን በጥልቀት መተንተን፣ ሪፖርት ማቅረብ እና ውሳኔ-ተኮር ስልቶችን ማዘጋጀት።</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ANALYTICS SECTION -->
+<section id="analytics">
+  <div class="section-eyebrow reveal">Live Analytics</div>
+  <h2 class="section-heading reveal">የ TikTok አፈጻጸም ትንታኔ</h2>
+  <div class="analytics-wrap">
+
+    <!-- Bar Chart -->
+    <div class="reveal-left">
+      <div class="chart-container">
+        <div class="chart-title">Monthly Views Growth <span>@eth_x12</span></div>
+        <div class="bar-chart" id="barChart">
+          <!-- bars injected by JS -->
+        </div>
+      </div>
+
+      <!-- Engagement breakdown -->
+      <div class="chart-container" style="margin-top:1rem;">
+        <div class="chart-title">Engagement Breakdown <span>Total</span></div>
+        <div class="donut-row" id="donutRow">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Text + mini stats -->
+    <div class="analytics-text reveal-right">
+      <h3>ትንታኔ ምን ይናገራል?</h3>
+      <p>ባለፉት 6 ወራት የ @eth_x12 ቻናል እድገት ተፋጥኗል። ሚያዚያ እና ሰኔ ወር ላይ ቪዲዮዎቹ ቫይራል ሆነው ከፍተኛ ቀረጻ ደርሷል።</p>
+      <p>የ Engagement Rate ከ 6.5% በላይ ሲሆን ይህ ከ TikTok ብሔራዊ አማካይ (3.2%) በእጥፍ ይበልጣል — ትክክለኛ ስልትና ቅርጸት የሚያመጣው ውጤት ነው።</p>
+      <div class="mini-stats">
+        <div class="mini-stat reveal-scale" style="transition-delay:.1s">
+          <div class="mini-stat-num" id="ms1">6.5%</div>
+          <div class="mini-stat-label">Engagement Rate</div>
+        </div>
+        <div class="mini-stat reveal-scale" style="transition-delay:.2s">
+          <div class="mini-stat-num" id="ms2">2×</div>
+          <div class="mini-stat-label">ከ Average በላይ</div>
+        </div>
+        <div class="mini-stat reveal-scale" style="transition-delay:.3s">
+          <div class="mini-stat-num" id="ms3">229K</div>
+          <div class="mini-stat-label">Profile Views</div>
+        </div>
+        <div class="mini-stat reveal-scale" style="transition-delay:.4s">
+          <div class="mini-stat-num" id="ms4">25.7K</div>
+          <div class="mini-stat-label">Comments</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-eyebrow reveal">Track Record</div>
+  <h2 class="section-heading reveal">ስኬቶቼ — ቁጥሮች ይናገራሉ</h2>
+  <div class="results-layout">
+    <div class="big-stats">
+      <div class="big-stat reveal" style="transition-delay:.05s">
+        <div class="big-stat-num" id="b1">36.8M+</div>
+        <div class="big-stat-label">Total Post Views on @eth_x12</div>
+      </div>
+      <div class="big-stat reveal" style="transition-delay:.1s">
+        <div class="big-stat-num" id="b2">50.3K</div>
+        <div class="big-stat-label">Active Followers</div>
+      </div>
+      <div class="big-stat reveal" style="transition-delay:.15s">
+        <div class="big-stat-num" id="b3">2.4M</div>
+        <div class="big-stat-label">Likes & Engagements</div>
+      </div>
+      <div class="big-stat reveal" style="transition-delay:.2s">
+        <div class="big-stat-num" id="b4">229K</div>
+        <div class="big-stat-label">Profile Views</div>
+      </div>
+      <div class="big-stat reveal" style="transition-delay:.25s">
+        <div class="big-stat-num" id="b5">469K</div>
+        <div class="big-stat-label">Shares</div>
+      </div>
+      <div class="big-stat reveal" style="transition-delay:.3s">
+        <div class="big-stat-num" id="b6">25.7K</div>
+        <div class="big-stat-label">Comments</div>
+      </div>
+    </div>
+    <div class="results-text reveal-right">
+      <h3>ምን ማለት ነው ይህ?</h3>
+      <p>የራሴን TikTok ገጽ (<strong style="color:var(--text);">@eth_x12</strong>) ፈጥሬ ካደጉ የኢትዮጵያ አካውንቶች አንዱ ሆኗል። ይህ ቁጥሮች ለደንበኛ ምን ማድረግ እንደምችል ይናገራሉ።</p>
+      <p>አካውንቴ ለ TikTok Award በእጩነት ቀርቧል — ይህ የሚያሳየው የይዘቴ ጥራት እና ትክክለኛ ስልት ያለ ብቸኛ Marketer ነኝ።</p>
+      <p>ለብራንድዎ ተመሳሳይ ወይም የተሻለ ውጤት ማምጣት እችላለሁ።</p>
+      <a href="https://www.tiktok.com/@eth_x12" target="_blank" rel="noopener" class="tiktok-link">🎵 @eth_x12 ን ይጎብኙ</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <div class="section-eyebrow reveal">Expertise</div>
+    <h2 class="section-heading reveal">ዋና ዋና ክህሎቶች</h2>
+    <p class="section-sub reveal">ዲጂታሉ ዓለም ሁልጊዜ ይለወጣል — ሁልጊዜ ወቅታዊ ሆኜ ብራንድዎን ወደፊት እወስዳለሁ።</p>
+    <div class="skills-grid">
+      <div class="skill-bars reveal-left" id="skillBars">
+        <!-- filled by JS -->
+      </div>
+      <div class="skills-tags-wrap reveal-right">
+        <h4>ሌሎች ክህሎቶች</h4>
+        <div class="skills-list">
+          <span class="skill-tag">TikTok Algorithm</span>
+          <span class="skill-tag">Instagram Growth</span>
+          <span class="skill-tag">Facebook Ads</span>
+          <span class="skill-tag">Content Strategy</span>
+          <span class="skill-tag">Video Editing</span>
+          <span class="skill-tag">Photo Editing</span>
+          <span class="skill-tag">Community Management</span>
+          <span class="skill-tag">Audience Targeting</span>
+          <span class="skill-tag">Analytics & Insights</span>
+          <span class="skill-tag">Brand Identity</span>
+          <span class="skill-tag">Viral Marketing</span>
+          <span class="skill-tag">Campaign Management</span>
+          <span class="skill-tag">Influencer Outreach</span>
+          <span class="skill-tag">SEO Basics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper reveal-scale">
+    <div class="section-eyebrow" style="text-align:center;">አሁን ይጀምሩ</div>
+    <h2 class="section-heading" style="text-align:center;">ንግድዎን ወደ ፊት እናድርጋቸው</h2>
+    <p style="color:var(--muted);font-family:'Noto Sans Ethiopic',sans-serif;line-height:1.8;max-width:460px;margin:0 auto .5rem;font-size:.95rem;">
+      ፕሮጀክትዎ ትንሽ ይሁን ትልቅ — ለምክክር ያነጋግሩኝ። ነጻ ምክር እሰጣለሁ።
+    </p>
+    <div class="contact-channels">
+      <a href="tel:+251940671132" class="channel-btn">📞 +251 940 671 132</a>
+      <a href="https://t.me/yohannes350" target="_blank" rel="noopener" class="channel-btn">✈️ @yohannes350</a>
+      <a href="https://www.tiktok.com/@eth_x12" target="_blank" rel="noopener" class="channel-btn">🎵 @eth_x12</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 ዮሐንስ ሰለሞን — Digital Marketer</span>
+  <span>Addis Ababa, Ethiopia</span>
+</footer>
+
+<script>
+/* ══════════════════════════════════════
+   1. PARTICLES
+══════════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, dots = [];
+  function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  for(let i=0;i<60;i++){
+    dots.push({
+      x: Math.random()*1920, y: Math.random()*1080,
+      vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3,
+      r: Math.random()*1.5+.5,
+      a: Math.random()*.6+.1
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    dots.forEach(d=>{
+      d.x+=d.vx; d.y+=d.vy;
+      if(d.x<0)d.x=W; if(d.x>W)d.x=0;
+      if(d.y<0)d.y=H; if(d.y>H)d.y=0;
+      ctx.beginPath();
+      ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(108,99,255,${d.a})`;
+      ctx.fill();
+    });
+    // connect near dots
+    for(let i=0;i<dots.length;i++){
+      for(let j=i+1;j<dots.length;j++){
+        const dx=dots[i].x-dots[j].x, dy=dots[i].y-dots[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.beginPath();
+          ctx.moveTo(dots[i].x,dots[i].y);
+          ctx.lineTo(dots[j].x,dots[j].y);
+          ctx.strokeStyle=`rgba(108,99,255,${.15*(1-dist/120)})`;
+          ctx.lineWidth=.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ══════════════════════════════════════
+   2. COUNTER
+══════════════════════════════════════ */
+function animateCounter(el, target, suffix, duration){
+  const isDecimal = (target % 1 !== 0);
+  const start = performance.now();
+  el.textContent = '0' + suffix;
+  function step(now){
+    const p = Math.min((now-start)/duration, 1);
+    const e = 1 - Math.pow(1-p, 3);
+    const v = target*e;
+    el.textContent = (isDecimal ? v.toFixed(1) : Math.round(v)) + suffix;
+    if(p<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const counterDefs = [
+  {id:'h1', target:50, suffix:'K+', dur:1600},
+  {id:'h2', target:36.8, suffix:'M', dur:1800},
+  {id:'h3', target:2.4, suffix:'M', dur:1500},
+  {id:'h4', target:469, suffix:'K', dur:1700},
+  {id:'b1', target:36.8, suffix:'M+', dur:2000},
+  {id:'b2', target:50.3, suffix:'K', dur:1600},
+  {id:'b3', target:2.4, suffix:'M', dur:1500},
+  {id:'b4', target:229, suffix:'K', dur:1700},
+  {id:'b5', target:469, suffix:'K', dur:1800},
+  {id:'b6', target:25.7, suffix:'K', dur:1500},
+  {id:'ms3', target:229, suffix:'K', dur:1500},
+  {id:'ms4', target:25.7, suffix:'K', dur:1400},
+];
+
+/* ══════════════════════════════════════
+   3. BAR CHART DATA
+══════════════════════════════════════ */
+const months = ['ጥር','የካ','መጋ','ሚያ','ግን','ሰኔ'];
+const vals   = [38, 52, 61, 89, 74, 95]; // relative heights %
+function buildBarChart(){
+  const wrap = document.getElementById('barChart');
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  months.forEach((m,i)=>{
+    const bw = document.createElement('div');
+    bw.className = 'bar-wrap';
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.height = vals[i]+'%';
+    bar.dataset.barIdx = i;
+    const lbl = document.createElement('div');
+    lbl.className = 'bar-month';
+    lbl.textContent = m;
+    bw.appendChild(bar);
+    bw.appendChild(lbl);
+    wrap.appendChild(bw);
+  });
+}
+
+function animateBars(){
+  document.querySelectorAll('.bar').forEach((b,i)=>{
+    setTimeout(()=>{ b.classList.add('animated'); }, i*120);
+  });
+}
+
+/* ══════════════════════════════════════
+   4. DONUT / ENGAGEMENT BARS
+══════════════════════════════════════ */
+const engagements = [
+  { label:'Likes', pct:66, color:'linear-gradient(90deg,#6C63FF,#A78BFA)' },
+  { label:'Shares', pct:19, color:'linear-gradient(90deg,#F5C842,#FBBF24)' },
+  { label:'Comments', pct:9, color:'linear-gradient(90deg,#34D399,#10B981)' },
+  { label:'Profile Visits', pct:6, color:'linear-gradient(90deg,#F472B6,#EC4899)' },
+];
+function buildDonut(){
+  const row = document.getElementById('donutRow');
+  if(!row) return;
+  row.innerHTML='';
+  engagements.forEach(e=>{
+    const item = document.createElement('div');
+    item.className='donut-item';
+    item.innerHTML=`
+      <div class="donut-label">${e.label}</div>
+      <div class="donut-bar-bg"><div class="donut-bar-fill" style="background:${e.color}" data-pct="${e.pct}"></div></div>
+      <div class="donut-pct">${e.pct}%</div>`;
+    row.appendChild(item);
+  });
+}
+function animateDonut(){
+  document.querySelectorAll('.donut-bar-fill').forEach((el,i)=>{
+    setTimeout(()=>{ el.style.width = el.dataset.pct+'%'; }, i*150);
+  });
+}
+
+/* ══════════════════════════════════════
+   5. SKILL BARS
+══════════════════════════════════════ */
+const skillData = [
+  { name:'TikTok / Short Video', pct:97, color:'linear-gradient(90deg,#6C63FF,#A78BFA)' },
+  { name:'Content Strategy', pct:92, color:'linear-gradient(90deg,#A78BFA,#7C3AED)' },
+  { name:'Social Media Growth', pct:90, color:'linear-gradient(90deg,#F5C842,#FBBF24)' },
+  { name:'Paid Advertising', pct:83, color:'linear-gradient(90deg,#34D399,#059669)' },
+  { name:'Video Editing', pct:88, color:'linear-gradient(90deg,#F472B6,#DB2777)' },
+  { name:'Analytics & Reporting', pct:85, color:'linear-gradient(90deg,#60A5FA,#2563EB)' },
+];
+function buildSkillBars(){
+  const wrap = document.getElementById('skillBars');
+  if(!wrap) return;
+  wrap.innerHTML='';
+  skillData.forEach(s=>{
+    const row = document.createElement('div');
+    row.className='skill-row';
+    row.innerHTML=`
+      <div class="skill-row-top">
+        <span class="skill-row-name">${s.name}</span>
+        <span class="skill-row-pct">${s.pct}%</span>
+      </div>
+      <div class="skill-track">
+        <div class="skill-fill" style="background:${s.color}" data-pct="${s.pct}"></div>
+      </div>`;
+    wrap.appendChild(row);
+  });
+}
+function animateSkillBars(){
+  document.querySelectorAll('.skill-fill').forEach((el,i)=>{
+    setTimeout(()=>{ el.style.width = el.dataset.pct+'%'; }, i*100);
+  });
+}
+
+/* ══════════════════════════════════════
+   6. INTERSECTION OBSERVER
+══════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',()=>{
+  buildBarChart();
+  buildDonut();
+  buildSkillBars();
+
+  const triggered = new Set();
+
+  // Reveal animations
+  const revealObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>revealObs.observe(el));
+
+  // Counters
+  const countObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !triggered.has(e.target.id)){
+        triggered.add(e.target.id);
+        const def = counterDefs.find(d=>d.id===e.target.id);
+        if(def) animateCounter(e.target, def.target, def.suffix, def.dur);
+        countObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.3});
+  counterDefs.forEach(d=>{ const el=document.getElementById(d.id); if(el) countObs.observe(el); });
+
+  // Bar chart
+  const barObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !triggered.has('bars')){
+        triggered.add('bars'); animateBars(); barObs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  const bc = document.getElementById('barChart');
+  if(bc) barObs.observe(bc);
+
+  // Donut
+  const donutObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !triggered.has('donut')){
+        triggered.add('donut'); animateDonut(); donutObs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  const dr = document.getElementById('donutRow');
+  if(dr) donutObs.observe(dr);
+
+  // Skill bars
+  const skillObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !triggered.has('skills')){
+        triggered.add('skills'); animateSkillBars(); skillObs.disconnect();
+      }
+    });
+  },{threshold:0.3});
+  const sb = document.getElementById('skillBars');
+  if(sb) skillObs.observe(sb);
+});
+</script>
+</body>
+</html>
